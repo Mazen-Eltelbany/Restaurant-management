@@ -1,0 +1,22 @@
+{%extends 'base.html' %}
+{% load static %}
+{%block title%}Add Meal to Menu{%endblock%}
+{%block content%}
+<h1>welcome to add meal page</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    <label for="name">Name:</label>
+    <input type="text" name="name" id="name" required>
+    <br>
+    <br>
+    <label for="price">Price:</label>
+    <input type="text" name="price" id="price" required>
+    <br>
+    <br>
+    <label for="description">Description:</label>
+    <textarea name="desc" id="description" required></textarea>
+    <br>
+    <br>
+    <input type="submit" value="Add Meal">
+</form>
+{%endblock%}

@@ -1,0 +1,23 @@
+{%extends 'base.html'%}
+{%load static%}
+{%block title%}Update Meal{%endblock%}
+{%block content%}
+<h1>Welcome to Update Meal page</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    <label for="name">name</label>
+    <input type="text" name="name" id="name" value="{{ meal.name }}" required>
+    <br>
+    <br>
+    <label for="price">price</label>
+    <input type="text" name="price" id="price" value="{{ meal.price }}" required>
+    <br>
+    <br>
+    <label for="desc">description</label>
+    <textarea name="desc" id="desc">{{ meal.description }}</textarea>
+    <br>
+    <br>
+    <input type="submit" value="Update">
+</form>
+
+{%endblock%}

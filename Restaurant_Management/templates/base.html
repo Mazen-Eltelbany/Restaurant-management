@@ -1,0 +1,77 @@
+{%load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%}My Website{%endblock%}</title>
+    <link rel="stylesheet" href="{% static 'style/style.css' %}">
+</head>
+<body>
+    <header>
+        <h2><a href="{% url 'main' %}">Restaurant</a></h2>
+        <nav>
+            <ul>
+                <li><a href="{% url 'customers' %}">Customers</a></li>
+                <li><a href="{% url 'menu' %}">Menu</a></li>
+                <li><a href="{% url 'allorders' %}">Orders</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block content %}
+        <div class="landing">
+        <div class="text">
+            <h1>Welcome to our Restaurant</h1>
+            <p>Manage customers, menus, and orders with ease.</p>
+        </div>
+        </div>
+        <div class="container">
+            <div class="customer-card card">
+                <div class="img"><img src="{%static 'images/customer.jpg'%}" alt=""></div>
+                <div class="text">
+                    <h2>Customers</h2>
+                    <p> Manage all customer information. 
+                        Add new customers, update details,
+                        and delete records easily.
+                    </p>
+                </div>
+            </div>
+            <div class="menu-card card">
+                <div class="img">
+                    <img src="{% static 'images/menu.jpg' %}" alt="menu img">
+                </div>
+                <div class="text">
+                    <h2>Menu</h2>
+                    <p> Browse and manage your restaurant menu. 
+                        Add meals, 
+                        update prices,
+                        delete meals,
+                        and organize items for easy access.
+                    </p>
+                </div>
+            </div>
+            <div class="order-card card">
+                <div class="img">
+                    <img src="{%static 'images/order.jpg' %}" alt="">
+                </div>
+                <div class="text">
+                    <h2>Orders</h2>
+                    <p> Handle customer orders efficiently. 
+                        Create new orders, 
+                        update quantities,
+                        delete order,
+                        and track order history.
+                    </p>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+    </main>
+    {% block footer %}
+    <footer style="text-align: center;">
+        <p>&copy; 2025 <span>Mazen Eltelbany</span> All right reserved</p>
+    </footer>
+    {%endblock%}
+</body>
+</html>

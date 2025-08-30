@@ -1,0 +1,39 @@
+{%extends 'base.html' %}
+{% load static %}
+{%block title%}Update Order Page{%endblock%}
+{%block content%}
+<h1>Welcome to Update Order Page</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    <label for="cust_name">Customer</label>
+    <select name="cust_name" id="cust_name" required>
+        <option value="" disabled>Choice the Customer</option>
+        {%for cust in customer%}
+        <option value="{{cust.id}}" data-phone="{{cust.phone}}"  
+        {% if order.customer.id == cust.id %} selected{%endif%}>
+            {{cust.name}} </option>
+        {%endfor%}
+    </select>
+    <br>
+    <br>
+    <label for="Phone">Phone</label>
+    <input type="text"  id="phone" name="phone" value="{{order.customer.phone}}" required>
+    <br>
+    <br>
+    <select name="meal" id="meal" required>
+        <option value=""disabled selected>Choice a Meal</option>
+        {%for meal in menu%}
+        <option value="{{meal.id}}"{% if order.meal.id == meal.id %} selected{%endif%}
+        >{{meal.name}}</option>
+        {%endfor%}
+    </select>
+    <br>
+    <br>
+    <label for="quantity">quantity</label>
+    <input type="number" name="qun" id="quantity" required >
+    <br>
+    <br>
+    <input type="submit" value="Update Order">
+</form>
+<script src="{%static 'JS/action.js' %}"></script>
+{%endblock%}

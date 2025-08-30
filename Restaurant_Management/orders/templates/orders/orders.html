@@ -1,0 +1,31 @@
+{%extends 'base.html' %}
+{%load static %}
+{%block title%}Orders Page{%endblock%}
+{%block content%}
+<h1>Welcome to Order Page</h1>
+<a href="{%url 'addorder'%}" class="add">Add Order</a>
+<table>
+    <tr>
+        <th>Customer Name</th>
+        <th>Phone</th>
+        <th>meal</th>
+        <th>quantity</th>
+        <th>Created At</th>
+        <th colspan="2">Actions</th>
+    </tr>
+    {% for order in orders %}
+        <tr>
+            <td>{{ order.customer_name }}</td>
+            <td>{{ order.phone }}</td>
+            <td>{{order.item.name}}</td>
+            <td>{{order.quantity}}</td>
+            <td>{{ order.created_at }}</td>
+            <td><a href="{% url 'deleteorder' order.id %}" class="del">Delete Order</a></td>
+            <td><a href="{% url 'updateorder' order.id %}" class="update">Update Order</a></td>
+        </tr>
+    {% endfor %}
+    <tr>
+
+    </tr>
+</table>
+{%endblock%}

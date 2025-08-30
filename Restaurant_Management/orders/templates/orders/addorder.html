@@ -1,0 +1,39 @@
+{%extends 'base.html' %}
+{% load static %}
+{%block title%}Add Order Page{%endblock%}
+{%block content%}
+<h1>Welcome to Add Order Page</h1>
+<form action="" method="post">
+    {%csrf_token%}
+    <label for="cust_name">Select a Customer</label>
+    <select name="cust_name" id="cust_name" onchange="Setphone()"  required>
+        <option value="" disabled selected>choice customer</option>
+        {%for cust in customers%}
+        <option value="{{cust.id}}" data-phone="{{cust.phone}}">{{cust.name}}</option>
+        {%endfor%}
+    </select>
+    <br>
+    <br>
+    <label for="phone">Phone:</label>
+    <input type="text" name="phone" id="phone" readonly>
+    <br>
+    <br>
+    <label for="meal">Select a meal</label>
+    <select name="meal" id="meal" required>
+        <option value="" disabled selected>Choice A meal</option>
+        {%for meal in menu%}
+        <option value="{{meal.id}}">{{meal.name}}</option>
+        {%endfor%}
+    </select>
+    <br>
+    <br>
+    <label for="quantity">quantity</label>
+    <input type="number" name="qun" id="quantity" required >
+    <br>
+    <br>
+    <input type="submit" value="Add order">
+</form>
+<script src="{%static 'JS/action.js'%}"></script>
+{%endblock%}
+{%block footer %}
+{% endblock %}

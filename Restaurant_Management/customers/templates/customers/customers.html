@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}Customers Page{% endblock %}
+{% block content %}
+<h1>Customers Page</h1>
+<a href="{% url 'addcustomer' %}" class="add">Add New Customer</a>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Orders - quantity</th>
+        <th>total orders</th>
+        <th colspan="2">Action</th>
+    </tr>
+    {% for customer in customers %}
+    <tr>
+        <td>{{ customer.id }}</td>
+        <td>{{ customer.name }}</td>
+        <td>{{ customer.phone }}</td>
+        <td>{{ customer.email }}</td>
+        <td>
+            {% if customer.orders.all %}
+        <ul>
+            {% for order in customer.orders.all %}
+                <li>{{ order.item.name }} - Quantity: {{ order.quantity }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            No orders
+        {% endif %}
+</td>
+
+        <td>{{customer.orders.count}}</td>
+        <td><a href="{% url 'deletecustomer' customer.id %}" class="del">Delete</a></td>
+        <td><a href="{% url 'updatecustomer' customer.id %}" class="update">Update</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

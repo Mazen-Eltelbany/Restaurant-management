@@ -1,0 +1,25 @@
+{%extends 'base.html' %}
+{%load static%}
+{%block title%}Menu page{%endblock%}
+{%block content%}
+<h1>Welcome to menu page</h1>
+<h2><a href="{% url 'addmeal' %}" class="add">Add a Meal</a></h2>
+<table border="2">
+    <tr>
+        <th>name</th>
+        <th>price</th>
+        <th>description</th>
+        <th colspan="2">Actions</th>
+    </tr>
+     {%for menu in menus%}
+    <tr>
+       
+        <td>{{menu.name}}</td>
+        <td>{{menu.price}}</td>
+        <td>{{menu.description}}</td>
+        <td><a href="{% url 'deletemeal' menu.id %}" class="del">Delete</a></td>
+        <td><a href="{% url 'updatemeal' menu.id %}" class="update">Update</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{%endblock%}
