@@ -9,6 +9,10 @@ class Customers(models.Model):
     @classmethod
     def GetCustomerbyid(cls,id):
         return cls.objects.get(id=id)
+    def total_orders(self):
+        return sum(order.quantity for order in self.orders.all())
+    def total_price(self):
+        return sum(order.quantity*order.item.price for order in self.orders.all())
 
 
 

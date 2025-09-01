@@ -11,6 +11,7 @@
         <th>Email</th>
         <th>Orders - quantity</th>
         <th>total orders</th>
+        <th>Total Price</th>
         <th colspan="2">Action</th>
     </tr>
     {% for customer in customers %}
@@ -31,7 +32,8 @@
         {% endif %}
 </td>
 
-        <td>{{customer.orders.count}}</td>
+        <td>{{customer.total_orders}}</td>
+        <td>{{customer.total_price}}</td>
         <td><a href="{% url 'deletecustomer' customer.id %}" class="del">Delete</a></td>
         <td><a href="{% url 'updatecustomer' customer.id %}" class="update">Update</a></td>
     </tr>

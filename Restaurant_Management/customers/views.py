@@ -29,7 +29,3 @@ def updatecustomer(request,id):
         c.save()
         return redirect('customers')
     return render(request,'customers/update.html')
-# def customerorders(request,id):
-#     context={}
-#     context['orders']=Orders.objects.filter(customer_id=id)
-#     return render(request,'customers/customerorders.html',context)
