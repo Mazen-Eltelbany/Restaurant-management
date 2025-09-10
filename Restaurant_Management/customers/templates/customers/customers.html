@@ -5,7 +5,6 @@
 <a href="{% url 'addcustomer' %}" class="add">Add New Customer</a>
 <table border="1">
     <tr>
-        <th>ID</th>
         <th>Name</th>
         <th>Phone</th>
         <th>Email</th>
@@ -16,7 +15,6 @@
     </tr>
     {% for customer in customers %}
     <tr>
-        <td>{{ customer.id }}</td>
         <td>{{ customer.name }}</td>
         <td>{{ customer.phone }}</td>
         <td>{{ customer.email }}</td>

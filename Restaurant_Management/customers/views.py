@@ -5,9 +5,10 @@ from orders.models import Orders
 def showmainpage(request):
     return render(request,'base.html')
 def allcustomers(request):
-    context={}
-    context['customers']=Customers.GetallCustomers()
-    return render(request,'customers/customers.html',context)
+    customers = Customers.objects.all().order_by("id")
+    context = {"customers": customers}
+    return render(request, "customers/customers.html", context)
+
 def addcustomer(request):
     if request.method=='POST':
         name=request.POST.get('name')
@@ -21,11 +22,11 @@ def deletecustomer(request,id):
     Customers.objects.filter(id=id).delete()
     return redirect('customers')
 def updatecustomer(request,id):
+    cust=Customers.GetCustomerbyid(id=id)
     if request.method=='POST':
-        name=request.POST.get('name')
-        phone=request.POST.get('phone')
-        email=request.POST.get('email')
-        c=Customers(id=id,name=name,phone=phone,email=email)
-        c.save()
+        cust.name=request.POST.get('name')
+        cust.phone=request.POST.get('phone')
+        cust.email=request.POST.get('email')
+        cust.save()
         return redirect('customers')
-    return render(request,'customers/update.html')
+    return render(request,'customers/update.html',{"customer":cust})
