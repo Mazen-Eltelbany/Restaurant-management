@@ -74,9 +74,6 @@ python manage.py createsuperuser
 ```bash
 python manage.py runserver
 ```
-🎥 Demo
-
-👉 [Insert video link or GIF here]
 
 ## 📌 What I Learned
 
